@@ -31,7 +31,7 @@
                     <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
                 <span class="navbar-text">
-                    <a id="loginIcon">
+                    <a data-toggle="modal" data-target="#loginModal">
                         <span class="fa fa-sign-in"></span> Login
                     </a>
                 </span>
@@ -88,7 +88,9 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class="col-12 col-sm-3 align-self-center">
-                    <a class="btn btn-sm btn-block btn-warning text-white" role="button" id="reserveButton">Reserve Table</a>
+                    <!-- <a href="#reserveForm" class="btn btn-sm btn-block btn-warning" data-toggle="tooltip" data-html="true" title="or Call us at <br><strong>+852 12345678</strong>" 
+                        data-placement="bottom"  role="button">Reserve Table</a> -->
+                    <a class="btn btn-sm btn-block btn-warning text-white" data-toggle="modal" data-target="#reserveForm" href="#" role="button">Reserve Table</a>
                 </div>
             </div>
         </div>
@@ -210,6 +212,15 @@
                         <span class="carousel-control-next-icon"></span>
                     </a>
                     
+                    <!-- <div class="btn-group" id="carouselButton">
+                        <button class="btn btn-danger btn-sm" id="carousel-pause">
+                            <span class="fa fa-pause"></span>
+                        </button>
+                        <button class="btn btn-danger btn-sm" id="carousel-play">
+                            <span class="fa fa-play"></span>
+                        </button>
+                    </div> -->
+                    
                     <button class="btn btn-danger btn-sm" id="carouselButton">
                         <span class="fa fa-pause"></span>
                     </button>
@@ -263,6 +274,63 @@
             </div>
         </div>
 
+        <!-- <div class="row row-content align-items-center justify-content-center" id="reserveForm">
+            <div class="col-12 col-sm-8">
+                <div class="card">
+                    <h3 class="card-header bg-warning text-white">Reserve a Table</h3>
+                    <div class="card-body">
+                        <form>
+                            <fieldset class="form-group">
+                                <div class="row">
+                                    <legend class="col-sm-3 col-form-label">Number of Guests</legend>
+                                    <div class="col-sm-9 align-self-center">
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" id="guest1" name="numGuests">
+                                            <label for="guest1" class="form-check-label">1</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" id="guest2" name="numGuests">
+                                            <label for="guest2" class="form-check-label">2</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" id="guest3" name="numGuests">
+                                            <label for="guest3" class="form-check-label">3</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" id="guest4" name="numGuests">
+                                            <label for="guest4" class="form-check-label">4</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" id="guest5" name="numGuests">
+                                            <label for="guest5" class="form-check-label">5</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="form-check-input" id="guest6" name="numGuests">
+                                            <label for="guest6" class="form-check-label">6</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="form-group row">
+                                <label class="col-12 col-sm-3 col-form-label" for="date">Date and Time</label>
+                                <div class="col-12 col-sm-4">
+                                    <input class="form-control" id="date" type="text" placeholder="Date" name="date">
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <input class="form-control" id="name" type="text" placeholder="Time" name="name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="offset-sm-3 col-9">
+                                    <button type="submit" class="btn btn-primary text-white">Reserve</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
     </div>
 
     <footer class="footer">
@@ -311,27 +379,37 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
+    <!-- <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+    </script> -->
+    <!-- <script>
+        $(document).ready(function(){
+            $('#mycarousel').carousel({interval:2000});
+            $('#carousel-pause').click(function(){
+                $("#mycarousel").carousel('pause');
+            });
+            $('#carousel-play').click(function(){
+                $("#mycarousel").carousel('cycle');
+            });
+        });
+    </script> -->
     <script>
         $(document).ready(function(){
             $('#mycarousel').carousel({interval:2000});
             $('#carouselButton').click(function(){
                 if($('#carouselButton').children('span').hasClass('fa-pause')){
-                    $('#mycarousel').carousel('pause');
+                    $("#mycarousel").carousel('pause');
                     $('#carouselButton').children('span').removeClass('fa-pause');
                     $('#carouselButton').children('span').addClass('fa-play');
                 }
                 else if($('#carouselButton').children('span').hasClass('fa-play')){
-                    $('#mycarousel').carousel('cycle');
+                    $("#mycarousel").carousel('cycle');
                     $('#carouselButton').children('span').removeClass('fa-play');
                     $('#carouselButton').children('span').addClass('fa-pause');
                 }
-            });
-            $('#reserveButton').click(function(){
-                $('#reserveForm').modal();
-            });
-            $('#loginIcon').click(function(){
-                $('#loginModal').modal();
+                
             });
         });
     </script>
